@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{% for post in posts %}
+
 <section class="site-hero" style="background-image: url({{ post.image.url }});" id="section-home">
     <div class="container">
         <div class="row intro-text align-items-center justify-content-center">
@@ -26,6 +26,7 @@
             </div>
         </div>
         <div class="row align-items-center justify-content-center">
+            {% for brand in brands %}
             <div class="col-6 col-md-4 col-lg-2 text-center mb-4 mb-lg-0">
                 <div class="client-logo client-google" data-aos="fade-up" data-aos-delay="0">
                     <span class="client-name">Google</span>
@@ -56,6 +57,7 @@
                     <span class="client-name">Spotify</span>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -81,17 +83,19 @@
 
         <div class="filters-content">
             <div class="row grid">
+                {% for post in portfolios %}
                 <div class="single-portfolio col-sm-4 all mockup">
                     <div class="relative">
                         <div class="thumb">
                             <div class="overlay overlay-bg"></div>
                             <picture>
                                 <source srcset="url ({{ post.image.url }})" type="image/webp">
-                                <img class="image img-fluid" src="url ({{ post.image.url }})" alt="Square Box Mockup"
+                                <img class="image img-fluid" src="url({{ post.portfolio.image.url }})"
+                                     alt="{{ post.portfolio.title }}"
                                      fetchpriority="high" decoding="sync">
                             </picture>
                         </div>
-                        <a href="url ({{ post.image.url }})" class="glightbox" data-gallery="portfolio">
+                        <a href="url({{ post.image.url }})" class="glightbox" data-gallery="portfolio">
                             <div class="middle">
                                 <div class="text align-self-center d-flex"><img
                                         src="https://preview.colorlib.com/theme/rezume/images/preview.png" alt=""
@@ -110,8 +114,8 @@
                             <div class="overlay overlay-bg"></div>
                             <picture>
                                 <source srcset="url ({{ post.image.url }})" type="image/webp">
-                                <img class="image img-fluid" src="url ({{ post.image.url }})"
-                                     alt="Product Box Package Mockup" loading="lazy" decoding="async">
+                                <img class="image img-fluid" src="url ({{ post.portfolio.image }})"
+                                     alt="{{ post.portfolio.image }}" loading="lazy" decoding="async">
                             </picture>
                         </div>
                         <a href="url ({{ post.image.url }})" class="glightbox" data-gallery="portfolio">
@@ -133,8 +137,8 @@
                             <div class="overlay overlay-bg"></div>
                             <picture>
                                 <source srcset="url ({{ post.image.url }})" type="image/webp">
-                                <img class="image img-fluid" src="url ({{ post.image.url }})"
-                                     alt="Creative Package Design" loading="lazy" decoding="async">
+                                <img class="image img-fluid" src="url ({{ post.portfolio.image }})"
+                                     alt="{{ post.portfolio.title }}" loading="lazy" decoding="async">
                             </picture>
                         </div>
                         <a href="url ({{ post.image.url }})" class="glightbox" data-gallery="portfolio">
@@ -157,7 +161,8 @@
                             <div class="overlay overlay-bg"></div>
                             <picture>
                                 <source srcset="url ({{ post.image.url }})" type="image/webp">
-                                <img class="image img-fluid" src="url ({{ post.image.url }})" alt="Packaging Brand"
+                                <img class="image img-fluid" src="url ({{ post.portfolio.image }})"
+                                     alt="{{ post.portfolio.title }}"
                                      loading="lazy" decoding="async">
                             </picture>
                         </div>
@@ -180,8 +185,8 @@
                             <div class="overlay overlay-bg"></div>
                             <picture>
                                 <source srcset="url ({{ post.image.url }})" type="image/webp">
-                                <img class="image img-fluid" src="url ({{ post.image.url }})"
-                                     alt="Isometric 3D Extrusion" loading="lazy" decoding="async">
+                                <img class="image img-fluid" src="url ({{ post.portfolio.image }})"
+                                     alt="{{ post.portfolio.title }}" loading="lazy" decoding="async">
                             </picture>
                         </div>
                         <a href="url ({{ post.image.url }})" class="glightbox" data-gallery="portfolio">
@@ -203,8 +208,8 @@
                             <div class="overlay overlay-bg"></div>
                             <picture>
                                 <source srcset="{{ post.image.url }}" type="image/webp">
-                                <img class="image img-fluid" src="{{ post.image.url }}"
-                                     alt="White Space Photography" loading="lazy" decoding="async">
+                                <img class="image img-fluid" src="{{ post.portfolio.image }}"
+                                     alt="{{ post.portfolio.title }}" loading="lazy" decoding="async">
                             </picture>
                         </div>
                         <a href="{{ post.image.url }}" class="glightbox" data-gallery="portfolio">
@@ -220,6 +225,7 @@
                         <div class="cat">photography</div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -542,7 +548,8 @@
                     </div>
                     <blockquote class="block-47-quote">
                         <p>{{ post.comment.description}}</p>
-                        <cite class="block-47-quote-author">&mdash; {{ post.comment.author_name }}, CEO <a href="index.html#">XYZ
+                        <cite class="block-47-quote-author">&mdash; {{ post.comment.author_name }}, CEO <a
+                                href="index.html#">XYZ
                             Inc.</a></cite>
                     </blockquote>
                 </div>
@@ -577,7 +584,8 @@
                     </div>
                     <blockquote class="block-47-quote">
                         <p>{{ post.comment.description}}</p>
-                        <cite class="block-47-quote-author">&mdash; {{ post.comment.author_name }}, CEO <a href="index.html#">XYZ
+                        <cite class="block-47-quote-author">&mdash; {{ post.comment.author_name }}, CEO <a
+                                href="index.html#">XYZ
                             Inc.</a></cite>
                     </blockquote>
                 </div>
@@ -594,7 +602,8 @@
                     </div>
                     <blockquote class="block-47-quote">
                         <p>{{ post.comment.description}}</p>
-                        <cite class="block-47-quote-author">&mdash;{{ post.comment.author_name }}, CEO <a href="index.html#">XYZ
+                        <cite class="block-47-quote-author">&mdash;{{ post.comment.author_name }}, CEO <a
+                                href="index.html#">XYZ
                             Inc.</a></cite>
                     </blockquote>
                 </div>
@@ -604,7 +613,7 @@
         </div>
     </div>
 </section>
-{% endfor %}
+
 
 <section class="site-section pb-0" id="section-services">
     <div class="container">
@@ -744,20 +753,20 @@
                     <h3 class="mb-5">Get In Touch</h3>
                     {% csrf_token %}
                     <div class="form-group mb-3">
-<!--                        <input type="text" class="form-control px-3 py-2" placeholder="Your Name">-->
+                        <!--                        <input type="text" class="form-control px-3 py-2" placeholder="Your Name">-->
                         {{ forms.name }}
                     </div>
                     <div class="form-group mb-3">
-<!--                        <input type="email" class="form-control px-3 py-2" placeholder="Your Email">-->
+                        <!--                        <input type="email" class="form-control px-3 py-2" placeholder="Your Email">-->
                         {{ forms.email }}
                     </div>
                     <div class="form-group mb-3">
-<!--                        <input type="tel" class="form-control px-3 py-2" placeholder="Your Phone">-->
+                        <!--                        <input type="tel" class="form-control px-3 py-2" placeholder="Your Phone">-->
                         {{ forms.phone }}
                     </div>
                     <div class="form-group mb-4">
-<!--                            <textarea class="form-control px-3 py-2" cols="30" rows="6"-->
-<!--                                      placeholder="Write a Message"></textarea>-->
+                        <!--                            <textarea class="form-control px-3 py-2" cols="30" rows="6"-->
+                        <!--                                      placeholder="Write a Message"></textarea>-->
                         {{ forms.message }}
                     </div>
                     <div class="form-group">
@@ -791,5 +800,6 @@
         </div>
     </div>
 </section>
+
 {% endblock %}
 

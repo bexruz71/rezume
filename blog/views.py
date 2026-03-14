@@ -4,12 +4,28 @@ from .forms import ContactForm
 
 
 def home_page(request):
-    brands = Brand.objects.all()
+    brand = Brand.objects.all()
     portfolio = Portfolio.objects.all()
     discount = Discount.objects.all()
     resume = Resume.objects.all()
-    awards = Awards.objects.all()
+    award = Awards.objects.all()
     about = About.objects.all()
     comment = Comment.objects.all().order_by('-created_date')
+    service = Service.objects.all()
+    blog = Blog.objects.all()
+    contact = Contact.objects.all()
+    context = {
+        'brands': brand,
+        'portfolios': portfolio,
+        'discounts': discount,
+        'resumes': resume,
+        'awards': award,
+        'abouts': about,
+        'comments': comment,
+        'services': service,
+        'blogs': blog,
+        'contacts': contact,
+    }
+    return render(request, 'index.html', context)
 
 
